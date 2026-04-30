@@ -71,13 +71,17 @@ docker run -d \
 
 ## Benchmarks
 
-| Moteur | Modèle | Config | Vitesse |
-|---------|--------|--------|---------|
-| **Ollama** | qwen2.5:14b | GPU/Metal natif | **13.6 t/s** ✅ |
-| **TurboQuant** | Qwen2.5-14B | GPU + turbo4 (ctx=2048) | **11.8 t/s** |
-| **TurboQuant** | Qwen2.5-3B | GPU + turbo4 (ctx=8192) | **45-55 t/s** ✅ |
+| Moteur | Modèle | Config | Vitesse | Contexte max |
+|---------|--------|--------|---------|--------------|
+| **Ollama** | qwen2.5:14b | GPU/Metal natif | **13.6 t/s** ✅ | 4k ❌ VRAM |
+| **TurboQuant** | Qwen2.5-14B | GPU + turbo4 (ctx=2048) | **11.8 t/s** | 8k ✅ |
+| **TurboQuant** | Qwen2.5-14B | GPU + turbo4 (ctx=8192) | **12.83 t/s** | **5630 tokens testés** ✅ |
+| **TurboQuant** | Qwen2.5-3B | GPU + turbo4 (ctx=8192) | **45-55 t/s** ✅ | 8k+ |
 
-**Avantage TurboQuant** : Gère 8k-16k tokens (KV compressé), Ollama plante >4k.
+**Test réel (2026-04-30)** :
+- TurboQuant 14B + ctx 8192 : 5530 tokens prompt + 100 tokens générés = **5630 tokens sans crash VRAM** ✅
+- Ollama 14B : crash dès 4k tokens (VRAM saturée)
+- **Avantage TurboQuant** : KV cache turbo4 (4-bit) économise ~75% VRAM → contextes longs possibles
 
 ## Scripts
 
