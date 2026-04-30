@@ -80,8 +80,11 @@ docker run -d \
 
 **Test réel (2026-04-30)** :
 - TurboQuant 14B + ctx 8192 : 5530 tokens prompt + 100 tokens générés = **5630 tokens sans crash VRAM** ✅
+- TurboQuant 14B + ctx 16384 (16k) : **10241 tokens prompt + 97 tokens = 10338 tokens totaux** ✅ (testé en direct)
 - Ollama 14B : crash dès 4k tokens (VRAM saturée)
-- **Avantage TurboQuant** : KV cache turbo4 (4-bit) économise ~75% VRAM → contextes longs possibles
+- **Avantage TurboQuant** : KV cache turbo4 (4-bit) économise ~75% VRAM → contextes 16k+ possibles
+
+**Vitesse moyenne (10241 tokens prompt)** : ~128 tokens/seconde en prompt processing
 
 ## Scripts
 
