@@ -1,0 +1,47 @@
+# Fichiers à ignorer par Git
+
+# Modèles GGUF (trop volumineux)
+*.gguf
+models/
+
+# Build artifacts TurboQuant
+llama-cpp-turboquant/build/
+llama-cpp-turboquant/bin/
+
+# Secrets et variables d'environnement
+.env
+*.secret
+*_secret.*
+
+# Docker volumes
+open-webui/
+librechat/
+
+# Fichiers temporaires
+*.log
+*.tmp
+/tmp/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env/
+
+# Node (si applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
