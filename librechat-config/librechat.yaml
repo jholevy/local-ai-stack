@@ -1,0 +1,25 @@
+version: 1.3.9
+
+endpoints:
+  custom:
+    - name: "Ollama Local"
+      apiKey: "ollama"
+      baseURL: "http://host.docker.internal:11434/v1"
+      models:
+        default:
+          - "qwen2.5:14b"
+          - "llama3.2:3b"
+          - "mistral:7b"
+          - "codellama:13b"
+      title: "Ollama (Local)"
+      modelDisplayLabel: "Ollama"
+      
+    - name: "TurboQuant Local"
+      apiKey: "turboquant"
+      baseURL: "http://host.docker.internal:8080/v1"
+      models:
+        default:
+          - "Qwen2.5-14B-Instruct-Q4_K_M.gguf"
+          - "Qwen3-14B-Q4_K_M.gguf"
+      title: "TurboQuant (Local)"
+      modelDisplayLabel: "TurboQuant"
